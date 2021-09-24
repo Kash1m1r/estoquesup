@@ -1,0 +1,29 @@
+<h2>Novo Equipamento</h2>
+<form action="/admin/listarequip/add" method="POST">
+    <div class="card-header">
+        <label for="equip">Equipamento: </label>
+        <div class="input-group mb-3">
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>Escolha o equipamento</option>
+                <option value="1">Computador</option>
+                <option value="2">Impressora</option>
+                <option value="3">Nobreak</option>
+                <option value="3">Monitor</option>
+                <option value="3">Estabilizador</option>
+                <option value="3">Notebook</option>
+                <option value="3">Scanner</option>
+            </select>
+        </div>
+        <hr>
+        <label for="tombo">Tombo: </label>
+        <input type="text" id="tb" name="tombo" placeholder="Digite o tombo" class="form-control">
+        <hr>
+        <label for="tombo">Marca: </label>
+        <input type="text" id="mc" name="marca" placeholder="Digite a marca" class="form-control">
+        <hr>
+        <label for="tombo">Modelo: </label>
+        <input type="text" id="md" name="modelo" placeholder="Digite o modelo" class="form-control">
+        <hr>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+    </div>    
+</form>
