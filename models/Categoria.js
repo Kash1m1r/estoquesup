@@ -2,7 +2,7 @@ const { text } = require("body-parser");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Categoria = new Schema({
+const Equip = new Schema({
     equipamento: {
         type: String,
         required: true
@@ -21,4 +21,4 @@ const Categoria = new Schema({
     }
 });
 
-mongoose.model("categorias", Categoria);
+mongoose.model("equipamentos", Equip);

@@ -1,19 +1,31 @@
-<h4>Novo Equipamento</h4>
-<form action="/admin/listarequip/add" method="POST">
-    <div class="card mb-3">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/dpema.png" class="img-fluid rounded-start" alt="Nome">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<div class="mid">
+    <h4>Novo Equipamento</h4>
+    <form action="/admin/listarequip/add" method="POST">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="/img/dpema.png" class="img-fluid rounded-start" alt="Nome">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <label for="Equipamento">Equipamento</label>
+                        <input type="text" id="eq" name="equip" placeholder="Digite seu equipamento" class="form-control">
+                        <hr>
+                        <label for="quantd">Quantidade: </label>
+                        <input type="text" id="tb" name="quantd" placeholder="Digite a quantidade" class="form-control">
+                        <hr>
+                        <label for="marca">Marca: </label>
+                        <input type="text" id="mc" name="marca" placeholder="Digite a marca" class="form-control">
+                        <hr>
+                        <label for="modelo">Modelo: </label>
+                        <input type="text" id="md" name="modelo" placeholder="Digite o modelo" class="form-control">
+                        <hr>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!--
     <div class="card-header">
         
