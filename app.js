@@ -14,6 +14,11 @@ const mongoose = require("mongoose");
     app.engine('.hbs', handlebars({defaultLayout: 'main', extname: '.hbs'}));
     app.set('view engine', '.hbs');
     // Mongoose
+    mongoose.connect("mongodb://localhost/estoquesup").then(() => {
+        console.log("..Conexão com o banco estabelicida com sucesso!");
+    }).catch((err) => {
+        console.log("Erro ao se comunicar com o banco de dados"+err);
+    })
     //Public
     app.use(express.static(path.join(__dirname,"public")));
 
