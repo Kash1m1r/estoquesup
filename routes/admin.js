@@ -9,7 +9,7 @@ const Equip = mogoose.model("equipamentos");
 
 router.get('/',(req, res) => {
     res.render("admin/index");
-});
+})
 router.get('/cadequip',(req, res) => {
     res.render("admin/cadastrarequip");
 });
