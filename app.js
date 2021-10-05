@@ -16,12 +16,16 @@ const mongoose = require("mongoose");
     // Mongoose
     mongoose.connect("mongodb://localhost/estoquesup").then(() => {
         console.log("..Conexão com o banco estabelicida com sucesso!");
+        console.log("..Conexão com o banco estabelecida com sucesso!");
     }).catch((err) => {
         console.log("Erro ao se comunicar com o banco de dados"+err);
     })
     //Public
     app.use(express.static(path.join(__dirname,"public")));
-
+    app.use((req, res, next) => {
+        console.log('Middleware');
+        next();
+    })
 //Rota
 app.use('/admin', admin);
 
