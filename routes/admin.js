@@ -35,9 +35,6 @@ router.post("/cadastrarequip/add", (req, res) => {
     if(!req.body.quantd || typeof req.body.quantd == undefined || req.body.quantd == null){
         erros.push({texto: "Quantidade inválida!"});
     }
-    if(req.body.quantd === 'string'){
-        erros.push({texto: "Quantidade errada"});
-    }
     if(!req.body.marca || typeof req.body.marca == undefined || req.body.marca == null || req.body.marca == Number){
         erros.push({texto: "Marca inválida!"});
     }
