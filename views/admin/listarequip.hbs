@@ -1,3 +1,16 @@
 <h2>Equipamentos Prontos: </h2>
 <br>
-<a href="/admin/cadequip"><button class="btn btn-info">Cadastrar Equipamento</button></a>
+<a href="/admin/cadastrarequip"><button class="btn btn-info">Cadastrar Equipamento</button></a>
+
+{{#each equipamentos}}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4>{{equipamento}} {{marca}} {{modelo}}</h4>
+            <small>Quantidade Cadastrada: {{quantidade}}</small>
+            
+            <small></small>
+        </div>
+    </div>
+{{else}}
+
+{{/each}}

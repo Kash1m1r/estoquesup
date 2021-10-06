@@ -10,14 +10,22 @@ const Equip = mogoose.model("equipamentos");
 router.get('/',(req, res) => {
     res.render("admin/index");
 })
-router.get('/cadequip',(req, res) => {
-    res.render("admin/cadastrarequip");
+router.get('/cadastrarequip',(req, res) => {
+  res.render('admin/cadastrarequip');
 });
 router.get('/listarequip', (req, res) => {
-    res.render("admin/listarequip");
+    
+    Equip.find().lean().then((equipamentos) => {
+        res.render("admin/listarequip", {equipamentos: equipamentos})
+    
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao listar os equipamentos"+err);
+        res.redirect("/admin");
+    })
+
 });
 
-router.post("/listarequip/add", (req, res) => {
+router.post("/cadastrarequip/add", (req, res) => {
 
     const erros = [];
 
@@ -27,7 +35,7 @@ router.post("/listarequip/add", (req, res) => {
     if(!req.body.quantd || typeof req.body.quantd == undefined || req.body.quantd == null){
         erros.push({texto: "Quantidade inválida!"});
     }
-    if(typeof req.body.quantd == 'number'){
+    if(req.body.quantd === 'string'){
         erros.push({texto: "Quantidade errada"});
     }
     if(!req.body.marca || typeof req.body.marca == undefined || req.body.marca == null || req.body.marca == Number){
