@@ -7,9 +7,10 @@ require("../models/Categoria");
 //Chamar função que passa a referência do model para uma variável
 const Equip = mogoose.model("equipamentos");
 
-router.get('/',(req, res) => {
-    res.render("admin/index");
-})
+router.get('/inicio', (req, res) => {
+    res.render('admin/index');
+});
+
 router.get('/cadastrarequip',(req, res) => {
   res.render('admin/cadastrarequip');
 });
