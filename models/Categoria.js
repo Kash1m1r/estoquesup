@@ -20,6 +20,10 @@ const Equip = new Schema({
     modelo: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
 });
 

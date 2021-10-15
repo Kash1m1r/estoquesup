@@ -1,14 +1,38 @@
 <h2>Equipamentos Prontos: </h2>
 <br>
 <a href="/admin/cadastrarequip"><button class="btn btn-info">Cadastrar Equipamento</button></a>
-
+<br>
 {{#each equipamentos}}
+
+    {{!--
     <div class="card mt-4">
         <div class="card-body">
             <h4>{{equipamento}} {{marca}} {{modelo}}</h4>
             <small>Quantidade Cadastrada: {{quantidade}}</small>
+            <br>
+            <small>{{date}}</small>
         </div>
     </div>
+    --}}
+    <br>
+
+    <div class="card" style="width: 18rem;">
+        <img src="/img/imp-lexmark.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{equipamento}} {{marca}} {{modelo}}</h5>
+            <p class="card-text">Quantidade Cadastrada: {{quantidade}} <br>
+                {{date}}
+            </p>
+            <a href="#" class="btn btn-primary">Alterar</a>
+            <a href="#" class="btn btn-danger">Deletar</a>
+        </div>
+    </div>
+
 {{else}}
 
 {{/each}}
+
+{{!--
+
+--}}
+    
