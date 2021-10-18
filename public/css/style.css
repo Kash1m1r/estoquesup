@@ -5,3 +5,11 @@
 .navbar navbar-expand-lg navbar-light{
     color: honeydew;
 }
+
+.card {
+    display: inline-block;
+}
+.card-body {
+    margin-left: 15px;
+    display: inline-block;
+}

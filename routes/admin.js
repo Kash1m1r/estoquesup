@@ -26,6 +26,16 @@ router.get('/listarequip', (req, res) => {
 
 });
 
+router.get("/listarequip/edit:id", (req, res) => {
+    Equip.findOne({_id:req.params.id}).then((editequip) => {
+        res.render("admin/editarequip", {editequip: editequip})
+    }).catch((err) => {
+        req.flash("error_msg", "Equipamento inexistente");
+        res.redirect("/admin/listarequip")
+
+    })
+})
+
 router.post("/cadastrarequip/add", (req, res) => {
 
     const erros = [];
