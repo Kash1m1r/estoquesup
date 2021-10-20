@@ -35,8 +35,31 @@ router.get("/listarequip/edit/:id", (req, res) => {
         req.flash("error_msg", "Equipamento inexistente");
         res.redirect("/admin/listarequip")
 
+    });
+});
+
+router.post("/listarequip/edit", (req, res) => {
+    Equip.findOne({_id: req.body.id}).then((edit) => {
+
+        edit.equipamento = req.body.equipamento
+        edit.quantidade = req.body.quantidade
+        edit.marca = req.body.marca
+        edit.modelo = req.body.modelo
+
+        edit.save().then(() => {
+            req.flash("success_msg", "Equipamento editado com sucesso!");
+            res.redirect("/admin/listarequip");
+        }).catch((err) => {
+            req.flash("error_msg", "Erro ao salvar a edição do equipamento");
+            res.redirect("/admin/listarequip");
+        })
+
+    }).catch((err) => {
+        req.flash("error_msg", "Erro ao salvar equipamento");
+        res.redirect("admin/listarequip");
+
     })
-})
+});
 
 router.post("/cadastrarequip/add", (req, res) => {
 

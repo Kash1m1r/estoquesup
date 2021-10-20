@@ -17,7 +17,8 @@
 
 <div class="mid">
     <h4>Editar Equipamento</h4>
-    <form action="/admin/cadastrarequip/add" method="POST">
+    <form action="/admin/listarequip/edit" method="POST">
+    <input type="hidden" name="id" value="{{edit._id}}"> 
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -35,7 +36,7 @@
                         <input type="text" id="marca" name="marca" placeholder="Digite a marca" class="form-control" value="{{edit.marca}}">
                         <hr>
                         <label for="modelo">Modelo: </label>
-                        <input type="text" id="modelo" name="modelo" placeholder="Digite o modelo" class="form-control" value="{{{edit.modelo}}}">
+                        <input type="text" id="modelo" name="modelo" placeholder="Digite o modelo" class="form-control" value="{{edit.modelo}}">
                         <hr>    
                         <button type="submit" class="btn btn-success">Editar</button>
                     </div>

@@ -3,7 +3,7 @@
 <a href="/admin/cadastrarequip"><button class="btn btn-info">Cadastrar Equipamento</button></a>
 <br>
 <br>
-<div class="card">
+<div class="card mt-2">
 
 {{#each equipamentos}}
 
@@ -19,17 +19,20 @@
     --}}
     <br>
 
-    <div class="card" style="width: 18rem;">
+ <div class="card" style="width: 18rem mt-3;">
        {{!<img src="" class="card-img-top" alt="...">}} 
         <div class="card-body">
             <h5 class="card-title">{{equipamento}} {{marca}} {{modelo}}</h5>
             <p class="card-text">Quantidade Cadastrada: {{quantidade}} <br>
                 {{date}}
             </p>
-            <a href="/admin/listarequip/edit/{{_id}}" class="btn btn-primary mt-2">Editar</a>
-            <a href="#" class="btn btn-danger mt-2">Deletar</a>
-        </div>
-    </div>
+            <a href="/admin/listarequip/edit/{{_id}}" class="btn btn-primary mt-4">Editar</a>
+            <a href="#" class="btn btn-danger mt-4">Deletar</a>
+     </div>
+       </div>
+    <hr>
+    <br>
+
 
 {{else}}
 
