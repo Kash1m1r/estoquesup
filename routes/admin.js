@@ -14,6 +14,8 @@ router.get('/index', (req, res) => {
 router.get('/cadastrarequip',(req, res) => {
   res.render('admin/cadastrarequip');
 });
+
+//rota de listagem
 router.get('/listarequip', (req, res) => {
     
     Equip.find().lean().sort({date: 'desc'}).then((equipamentos) => {
@@ -23,12 +25,12 @@ router.get('/listarequip', (req, res) => {
         req.flash("error_msg", "Houve um erro ao listar os equipamentos"+err);
         res.redirect("/admin");
     })
-
 });
 
-router.get("/listarequip/edit:id", (req, res) => {
-    Equip.findOne({_id:req.params.id}).lean().then((editequip) => {
-        res.render("admin/editarequip", {editequip: editequip})
+//rota de editar
+router.get("/listarequip/edit/:id", (req, res) => {
+    Equip.findOne({_id:req.params.id}).lean().then((edit) => {
+        res.render("admin/editarequip", {edit: edit})
     }).catch((err) => {
         req.flash("error_msg", "Equipamento inexistente");
         res.redirect("/admin/listarequip")
