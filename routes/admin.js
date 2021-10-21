@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+require("stream") 
 //Importar o mogoose
 const mogoose = require("mongoose");
 //Chamar arquivo do model
 require("../models/Categoria");
+require("../models/Local");
 //Chamar função que passa a referência do model para uma variável
 const Equip = mogoose.model("equipamentos");
+const Local = mogoose.model("localidade");
 
 router.get('/index', (req, res) => {
     res.render('admin/index');
@@ -112,5 +115,31 @@ router.post("/listarequip/delet", (req, res) => {
         res.redirect("/admin/listarequip");
     })
 })
+
+router.get("/equipamentos", (req, res) => {
+    res.render("admin/equipamentos");
+})
+
+router.post("/cadastrarlocal/add", (req, res) => {
+    const newLocal = {
+        local: req.body.local,
+        nucleo: req.body.nucleo,
+        setor: req.body.setor
+    }
+
+    new Local(newLocal).save().then(() =>{
+        req.flash("success_msg", "Localidade cadastrada com sucesso!");
+        res.redirect('/admin/listarlocal');
+    }).catch((err) => {
+        req.flash("error_msg", "Erro ao salvar localidade");
+  
+    });
+});
+router.get("/listarlocal", (req, res) => {
+    res.render("admin/local");
+});
+router.get("/cadastrarlocal", (req, res) => {
+    res.render("admin/cadastrarlocal");
+});
 
 module.exports = router;
