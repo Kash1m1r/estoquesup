@@ -1,7 +1,4 @@
-const { text } = require("body-parser");
-const { Double } = require("bson");
 const mongoose = require("mongoose");
-const { boolean } = require("webidl-conversions");
 const Schema = mongoose.Schema;
 
 const Equip = new Schema({

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-require("stream") 
+
 //Importar o mogoose
 const mogoose = require("mongoose");
 //Chamar arquivo do model
@@ -121,19 +121,28 @@ router.get("/equipamentos", (req, res) => {
 })
 
 router.post("/cadastrarlocal/add", (req, res) => {
-    const newLocal = {
-        local: req.body.local,
-        nucleo: req.body.nucleo,
-        setor: req.body.setor
-    }
+    const erros = [];
 
-    new Local(newLocal).save().then(() =>{
-        req.flash("success_msg", "Localidade cadastrada com sucesso!");
-        res.redirect('/admin/listarlocal');
-    }).catch((err) => {
-        req.flash("error_msg", "Erro ao salvar localidade");
-  
-    });
+    if(!req.body.local || typeof req.body.local == undefined || req.body.local == null || req.body.local == Number){
+        erros.push({texto: "Equipamento inválido!"});
+    }
+    if(erros.length > 0 ){
+        res.render("admin/cadastrarlocal", {erros: erros});
+    }else{
+        const newLocal = {
+            local: req.body.local,
+            nucleo: req.body.nucleo,
+            setor: req.body.setor
+        }
+
+        new Local(newLocal).save().then(() => {
+            req.flash("success_msg", "Localidade cadastrada com sucesso!");
+            res.redirect('/admin/listarlocal');
+        }).catch((err) => {
+            req.flash("error_msg", "Erro ao salvar localidade");
+    
+        });
+    }
 });
 router.get("/listarlocal", (req, res) => {
     res.render("admin/local");

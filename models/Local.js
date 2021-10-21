@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { text } = require("stream/consumers");
 const Schema = mongoose.Schema;
 
 const Local = new Schema({
