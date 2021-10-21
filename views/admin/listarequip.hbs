@@ -27,7 +27,10 @@
                 {{date}}
             </p>
             <a href="/admin/listarequip/edit/{{_id}}" class="btn btn-primary mt-4">Editar</a>
-            <a href="#" class="btn btn-danger mt-4">Deletar</a>
+            <form action="/admin/listarequip/delet" method="POST">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-danger mt-4">Deletar</button>
+            </form>
      </div>
        </div>
     <hr>

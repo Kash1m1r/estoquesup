@@ -39,10 +39,11 @@ router.get("/listarequip/edit/:id", (req, res) => {
 });
 
 router.post("/listarequip/edit", (req, res) => {
+    
     Equip.findOne({_id: req.body.id}).then((edit) => {
 
-        edit.equipamento = req.body.equipamento
-        edit.quantidade = req.body.quantidade
+        edit.equipamento = req.body.equip
+        edit.quantidade = req.body.quantd
         edit.marca = req.body.marca
         edit.modelo = req.body.modelo
 
@@ -56,7 +57,7 @@ router.post("/listarequip/edit", (req, res) => {
 
     }).catch((err) => {
         req.flash("error_msg", "Erro ao salvar equipamento");
-        res.redirect("admin/listarequip");
+        res.redirect("/admin/listarequip");
 
     })
 });
@@ -100,6 +101,16 @@ router.post("/cadastrarequip/add", (req, res) => {
     }
 
 
+})
+
+router.post("/listarequip/delet", (req, res) => {
+    Equip.remove({_id: req.body.id}).then(() =>{
+        req.flash("success_msg", "Equipamento removido com sucesso");
+        res.redirect("/admin/listarequip");
+    }).catch((err) => {
+        req.flash("error_msg", "Falha ao remover equipamento");
+        res.redirect("/admin/listarequip");
+    })
 })
 
 module.exports = router;
