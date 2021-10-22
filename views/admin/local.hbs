@@ -5,3 +5,15 @@
 <br>
 <div class="card mt-2">
 
+{{#each localidade}}
+    <div class="card">
+        <div class="card-body">
+            <h4>Região: {{local}}</h4>
+            <h3>Núcleo: {{nucleo}}</h3>
+            <small>Setor: {{setor}}</small>
+            <small>Equipamento: {{equip.equipamento}}</small>
+        </div>
+    </div>
+{{else}}
+
+{{/each}}

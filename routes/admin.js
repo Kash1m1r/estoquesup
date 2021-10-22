@@ -146,7 +146,13 @@ router.post("/cadastrarlocal/add", (req, res) => {
     }
 });
 router.get("/listarlocal", (req, res) => {
-    res.render("admin/local");
+    Local.find().populate("equip").lean().sort({data: "desc"}).then((localidade) => {
+        res.render("admin/local", {localidade: localidade});
+    }).catch((err) => {
+        req.flash("error_msg", "Falhar ao listar localdades");
+        res.redirect("/admin/listarlocal");
+    })
+    
 });
 router.get("/cadastrarlocal", (req, res) => {
     Equip.find().lean().then((equipamentos) => {
