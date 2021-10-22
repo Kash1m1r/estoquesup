@@ -14,15 +14,16 @@ const Local = new Schema({
         type: String,
         required: true
     },
-    data: {
-        type: Date,
-        default: Date.now()
-    },
     equip: {
         type: Schema.Types.ObjectId,
         ref: "equipamentos",
         required: true
+    },
+    data: {
+        type: Date,
+        default: Date.now()
     }
+    
 });
 
 mongoose.model("localidade", Local);

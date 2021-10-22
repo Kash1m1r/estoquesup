@@ -34,8 +34,15 @@
                         <label for="setor">Setor: </label>
                         <input type="text" id="setor" name="setor" placeholder="Digite seu setor" class="form-control">
                         <hr>
-                          
-                        <button type="submit" class="btn btn-success">Cadastrar localidade</button>
+                        <label for="equipamentos">Equipamentos: </label>
+                        <select name="equipamentos" class="form-select">
+                            {{#each equipamentos}}
+                                <option value="{{_id}}">{{equipamento}}</option>
+                            {{else}}
+                                <option value="">Nenhum equipamento registrado</option>
+                            {{/each}}
+                        </select>
+                        <button type="submit" class="btn btn-success mt-2">Cadastrar localidade</button>
                     </div>
                 </div>
             </div>

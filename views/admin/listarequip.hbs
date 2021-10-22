@@ -3,7 +3,7 @@
 <a href="/admin/cadastrarequip"><button class="btn btn-info">Cadastrar Equipamento</button></a>
 <br>
 <br>
-<div class="card mt-2">
+
 
 {{#each equipamentos}}
 
@@ -19,7 +19,7 @@
     --}}
     <br>
 
- <div class="card" style="width: 18rem mt-3;">
+ <div class="card" style="">
        {{!<img src="" class="card-img-top" alt="...">}} 
         <div class="card-body">
             <h5 class="card-title">{{equipamento}} {{marca}} {{modelo}}</h5>
@@ -27,20 +27,18 @@
                 {{date}}
             </p>
             <a href="/admin/listarequip/edit/{{_id}}" class="btn btn-primary mt-4">Editar</a>
+            
             <form action="/admin/listarequip/delet" method="POST">
                 <input type="hidden" name="id" value="{{_id}}">
                 <button type="submit" class="btn btn-danger mt-4">Deletar</button>
             </form>
-     </div>
-       </div>
-    <hr>
-    <br>
-
+        </div>
+  </div>
 
 {{else}}
 
 {{/each}}
-</div>
+
 {{!--
 
 --}}

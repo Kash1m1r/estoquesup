@@ -123,32 +123,39 @@ router.get("/equipamentos", (req, res) => {
 router.post("/cadastrarlocal/add", (req, res) => {
     const erros = [];
 
-    if(!req.body.local || typeof req.body.local == undefined || req.body.local == null || req.body.local == Number){
+    if(!req.body.local || typeof req.body.local == undefined || req.body.local == null){
         erros.push({texto: "Equipamento inválido!"});
     }
     if(erros.length > 0 ){
         res.render("admin/cadastrarlocal", {erros: erros});
     }else{
-        const newLocal = {
+        const novoLocal = {
             local: req.body.local,
             nucleo: req.body.nucleo,
-            setor: req.body.setor
+            setor: req.body.setor,
+            equip: req.body.equipamentos
         }
 
-        new Local(newLocal).save().then(() => {
-            req.flash("success_msg", "Localidade cadastrada com sucesso!");
-            res.redirect('/admin/listarlocal');
+        new Local(novoLocal).save().then(() => {
+            req.flash("success_msg", "Localidade criada com sucesso!");
+            res.redirect("/admin/listarlocal")
         }).catch((err) => {
-            req.flash("error_msg", "Erro ao salvar localidade");
-    
-        });
+            req.flash("error_msg", "Falha ao criar localidade"+err);
+            res.redirect("/admin/listarlocal");   
+        })
     }
 });
 router.get("/listarlocal", (req, res) => {
     res.render("admin/local");
 });
 router.get("/cadastrarlocal", (req, res) => {
-    res.render("admin/cadastrarlocal");
+    Equip.find().lean().then((equipamentos) => {
+        res.render("admin/cadastrarlocal", {equipamentos:equipamentos});
+    }).catch((err) => {
+        req.flash("error_msg", "Falha a listar os equipamentos");
+        res.redirect("/listarlocal");
+    });
+    
 });
 
 module.exports = router;
