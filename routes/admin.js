@@ -104,7 +104,7 @@ router.post("/cadastrarequip/add", (req, res) => {
     }
 
 
-})
+});
 
 router.post("/listarequip/delet", (req, res) => {
     Equip.remove({_id: req.body.id}).then(() =>{
@@ -114,11 +114,11 @@ router.post("/listarequip/delet", (req, res) => {
         req.flash("error_msg", "Falha ao remover equipamento");
         res.redirect("/admin/listarequip");
     })
-})
+});
 
 router.get("/equipamentos", (req, res) => {
     res.render("admin/equipamentos");
-})
+});
 
 router.post("/cadastrarlocal/add", (req, res) => {
     const erros = [];
@@ -162,6 +162,9 @@ router.get("/cadastrarlocal", (req, res) => {
         res.redirect("/listarlocal");
     });
     
+});
+router.get("/listarlocal/edit/:id", (req, res) => {
+    res.render("admin/editarlocal");
 });
 
 module.exports = router;

@@ -3,7 +3,7 @@
 <a href="/admin/cadastrarlocal"><button class="btn btn-info">Cadastrar Local</button></a>
 <br>
 <br>
-<div class="card mt-2">
+
 
 {{#each localidade}}
     <div class="card">
@@ -12,6 +12,8 @@
             <h3>Núcleo: {{nucleo}}</h3>
             <small>Setor: {{setor}}</small>
             <small>Equipamento: {{equip.equipamento}}</small>
+            <hr>
+            <a href="/admin/listarlocal/edit/{{_id}}"><button class="btn btn-success">Editar Local</button></a>
         </div>
     </div>
 {{else}}
