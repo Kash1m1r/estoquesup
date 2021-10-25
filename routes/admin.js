@@ -164,6 +164,17 @@ router.get("/cadastrarlocal", (req, res) => {
     
 });
 router.get("/listarlocal/edit/:id", (req, res) => {
+    Local.findOne({_id: req.params.id}).then((local) =>{
+        Equip.find().then((equipamentos) => {
+            res.render("/admin/editarlocal", {equipamentos: equipamentos, local: local})
+        }).catch((err) => {
+            req.flash("error_msg", "Erro ao listar os equipamentos");
+            res.redirect("/admin/listarlocal");
+        })
+    }).catch((err) => {
+        req.flash("error_msg", "Erro ao carregar formulário de edição"+err)
+        res.redirect("/admin/listarlocal")
+    })
     res.render("admin/editarlocal");
 });
 
