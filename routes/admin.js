@@ -164,18 +164,38 @@ router.get("/cadastrarlocal", (req, res) => {
     
 });
 router.get("/listarlocal/edit/:id", (req, res) => {
-    Local.findOne({_id: req.params.id}).then((local) =>{
-        Equip.find().then((equipamentos) => {
-            res.render("/admin/editarlocal", {equipamentos: equipamentos, local: local})
+    Local.findOne({_id: req.params.id}).lean().then((local) =>{
+        Equip.find().lean().then((equipamentos) => {
+            res.render("admin/editarlocal", {equipamentos: equipamentos, local: local})
         }).catch((err) => {
-            req.flash("error_msg", "Erro ao listar os equipamentos");
+            req.flash("error_msg", "Erro ao listar os equipamentos"+err);
             res.redirect("/admin/listarlocal");
         })
     }).catch((err) => {
         req.flash("error_msg", "Erro ao carregar formulário de edição"+err)
         res.redirect("/admin/listarlocal")
-    })
-    res.render("admin/editarlocal");
+    });
 });
+
+router.post("/listarlocal/edit", (req, res) => {
+    Local.findOne({_id: req.body.id}).lean().then((local) => {
+
+        local.local = req.body.local
+        local.nucleo = req.body.nucleo
+        local.setor = req.body.setor
+        local.equipamento = req.body.equipamento
+
+        local.save().then(() => {
+            req.flash("success_msg", "Local editado com sucesso");
+            res.redirect("/admin/listarlocal");
+        }).catch((err) => {
+            req.flash("error_msg", "Erro ao editar localidade");
+            res.redirect("/admin/listarlocal")
+        })
+    }).catch((err) => {
+        req.flash("error_msg", "Erro ao editar equipamento");
+        res.redirect("/admin/listarlocal");
+    });
+})
 
 module.exports = router;

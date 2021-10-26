@@ -17,35 +17,36 @@
 
 <div class="mid">
     <h4>Editar Localidade</h4>
-   
-    <input type="hidden" name="id" value="{{edit._id}}"> 
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="/img/dpema.png" class="img-fluid rounded-start" alt="Nome">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">           
-                        <label for="Local">Local:</label>
-                        <input type="text" id="local" name="local" placeholder="Digite seu local" class="form-control" value="{{edit.local}}">
-                        <hr>
-                        <label for="nucleo">Núcleo: </label>
-                        <input type="text" id="nucleo" name="nucleo" placeholder="Digite a nucleo" class="form-control" value="{{edit.nucleo}}">
-                        <hr>
-                        <label for="setor">Setor: </label>
-                        <input type="text" id="setor" name="setor" placeholder="Digite a setor" class="form-control" value="{{edit.setor}}">
-                        <hr>
-                        <label for="equipamentos">Equipamentos: </label>
-                        <select name="equipamentos" class="form-select">
-                            {{#each equipamentos}}  
-                                <option value="{{_id}}">{{equipamento}}</option>
-                            {{else}}
-                                <option value="">Nenhum equipamento registrado</option>
-                            {{/each}}
-                        </select>   
-                        <button type="submit" class="btn btn-success">Editar</button>
+    <form action="/admin/listarlocal/edit" method="POST">
+        <input type="hidden" name="id" value="{{_id}}"> 
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/img/dpema.png" class="img-fluid rounded-start" alt="Nome">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">           
+                            <label for="Local">Local:</label>
+                            <input type="text" id="local" name="local" placeholder="Digite seu local" class="form-control" value="{{local.local}}" required >
+                            <hr>
+                            <label for="nucleo">Núcleo: </label>
+                            <input type="text" id="nucleo" name="nucleo" placeholder="Digite a nucleo" class="form-control" value="{{local.nucleo}}" required>
+                            <hr>
+                            <label for="setor">Setor: </label>
+                            <input type="text" id="setor" name="setor" placeholder="Digite a setor" class="form-control" value="{{local.setor}}" required>
+                            <hr>
+                            <label for="equipamentos">Equipamentos: </label>
+                            <select name="equipamentos" class="form-select">
+                                {{#each equipamentos}}  
+                                    <option value="{{_id}}">{{equipamento}}</option>
+                                {{else}}
+                                    <option value="">Nenhum equipamento registrado</option>
+                                {{/each}}
+                            </select>   
+                            <button type="submit" class="btn btn-success">Editar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+    </form>
 </div>
