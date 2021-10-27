@@ -184,7 +184,7 @@ router.post("/listarlocal/edit", (req, res) => {
         local.local = req.body.local
         local.nucleo = req.body.nucleo
         local.setor = req.body.setor
-     
+        local.equip = req.body.equip
 
         local.save().then(() => {
             req.flash("success_msg", "Local editado com sucesso");
@@ -198,5 +198,16 @@ router.post("/listarlocal/edit", (req, res) => {
         res.redirect("/admin/listarlocal");
     });
 })
+
+router.get("/listarlocal/delet/:id", (req, res) => {
+
+    Local.remove({_id: req.params.id}).then(() => {
+        req.flash("success_msg", "Local removido")
+        res.redirect("/admin/listarlocal")
+    }).catch((err) => {
+        req.flash("error_msg", "Ocorreu um erro ao remover local"+err);
+        res.redirect("/admin/listarlocal");
+    });
+});
 
 module.exports = router;
