@@ -1,3 +1,45 @@
 <h2>Equipamentos Prontos: </h2>
 <br>
-<a href="/admin/cadequip"><button class="btn btn-info">Cadastrar Equipamento</button></a>
+<a href="/admin/cadastrarequip"><button class="btn btn-info">Cadastrar Equipamento</button></a>
+<br>
+<br>
+
+
+{{#each equipamentos}}
+
+    {{!--
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4>{{equipamento}} {{marca}} {{modelo}}</h4>
+            <small>Quantidade Cadastrada: {{quantidade}}</small>
+            <br>
+            <small>{{date}}</small>
+        </div>
+    </div>
+    --}}
+    <br>
+
+ <div class="card" style="">
+       {{!<img src="" class="card-img-top" alt="...">}} 
+        <div class="card-body">
+            <h5 class="card-title">{{equipamento}} {{marca}} {{modelo}}</h5>
+            <p class="card-text">Quantidade Cadastrada: {{quantidade}} <br>
+                {{date}}
+            </p>
+            <a href="/admin/listarequip/edit/{{_id}}" class="btn btn-primary mt-4">Editar</a>
+            
+            <form action="/admin/listarequip/delet" method="POST">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-danger mt-4">Deletar</button>
+            </form>
+        </div>
+  </div>
+
+{{else}}
+
+{{/each}}
+
+{{!--
+
+--}}
+    

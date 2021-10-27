@@ -1,0 +1,22 @@
+<h2>Localidades </h2>
+<br>
+<a href="/admin/cadastrarlocal"><button class="btn btn-info">Cadastrar Local</button></a>
+<br>
+<br>
+
+
+{{#each localidade}}
+    <div class="card">
+        <div class="card-body">
+            <h4>Região: {{local}}</h4>
+            <h3>Núcleo: {{nucleo}}</h3>
+            <small>Setor: {{setor}}</small>
+            <small>Equipamento: {{equip.equipamento}}</small>
+            <hr>
+            <a href="/admin/listarlocal/edit/{{_id}}"><button class="btn btn-success">Editar Local</button></a>
+            <a href="/admin/listarlocal/delet/{{_id}}"><button class="btn btn-danger">Remover Local</button></a>
+        </div>
+    </div>
+{{else}}
+
+{{/each}}
