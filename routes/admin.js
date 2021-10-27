@@ -81,9 +81,10 @@ router.post("/cadastrarequip/add", (req, res) => {
     if(!req.body.modelo || typeof req.body.modelo == undefined || req.body.modelo == null){
         erros.push({texto: "Modelo inválido!"});
     }
-    if(req.body.quantd = 0 || req.body.quantd < 0){
-        erros.push({texto: "Quantidade nula ou inferior a zero"});
+    if(req.body.quantd == 0 || req.body.quantd < 0){
+        erros.push({texto: "Quantidade nula ou inferior a 0"});
     }
+   
     if(erros.length > 0 ){
         res.render("admin/cadastrarequip", {erros: erros});
     }else{
@@ -178,22 +179,22 @@ router.get("/listarlocal/edit/:id", (req, res) => {
 });
 
 router.post("/listarlocal/edit", (req, res) => {
-    Local.findOne({_id: req.body.id}).lean().then((local) => {
+    Local.findOne({_id: req.body.id}).then((local) => {
 
         local.local = req.body.local
         local.nucleo = req.body.nucleo
         local.setor = req.body.setor
-        local.equipamento = req.body.equipamento
+     
 
         local.save().then(() => {
             req.flash("success_msg", "Local editado com sucesso");
             res.redirect("/admin/listarlocal");
         }).catch((err) => {
-            req.flash("error_msg", "Erro ao editar localidade");
+            req.flash("error_msg", "Erro ao editar localidade"+err);
             res.redirect("/admin/listarlocal")
         })
     }).catch((err) => {
-        req.flash("error_msg", "Erro ao editar equipamento");
+        req.flash("error_msg", "Erro ao editar equipamento"+err);
         res.redirect("/admin/listarlocal");
     });
 })

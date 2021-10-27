@@ -18,7 +18,7 @@
 <div class="mid">
     <h4>Editar Localidade</h4>
     <form action="/admin/listarlocal/edit" method="POST">
-        <input type="hidden" name="id" value="{{_id}}"> 
+        <input type="hidden" value="{{local._id}}" name="id"> 
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -40,10 +40,10 @@
                                 {{#each equipamentos}}  
                                     <option value="{{_id}}">{{equipamento}}</option>
                                 {{else}}
-                                    <option value="">Nenhum equipamento registrado</option>
+                                    <option value="0">Nenhum equipamento registrado</option>
                                 {{/each}}
                             </select>   
-                            <button type="submit" class="btn btn-success">Editar</button>
+                            <button type="submit" class="btn btn-success mt-3">Editar</button>
                         </div>
                     </div>
                 </div>
